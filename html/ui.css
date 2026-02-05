@@ -1,0 +1,392 @@
+/* 
+🐺 LXR Book - UI Styles
+Western/Parchment themed book interface
+© 2026 iBoss21 / The Lux Empire | wolves.land
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MODAL BASE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c1810 0%, #3d2415 100%);
+    border: 3px solid #8b6914;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(139, 105, 20, 0.5);
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #8b6914 0%, #6b5410 100%);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #5a4710;
+}
+
+.modal-header h2 {
+    color: #f4e4c1;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin: 0;
+}
+
+.close-btn {
+    background: rgba(220, 50, 50, 0.8);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    background: rgba(255, 70, 70, 1);
+    transform: scale(1.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BOOK BUILDER
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.builder-content {
+    width: 1000px;
+    height: 700px;
+}
+
+.builder-body {
+    display: flex;
+    height: calc(100% - 60px);
+}
+
+.builder-sidebar {
+    width: 250px;
+    background: rgba(0, 0, 0, 0.3);
+    border-right: 2px solid #8b6914;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    color: #f4e4c1;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #8b6914;
+    padding-bottom: 10px;
+}
+
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.book-item {
+    background: rgba(139, 105, 20, 0.2);
+    border: 1px solid #8b6914;
+    padding: 10px;
+    border-radius: 5px;
+    color: #f4e4c1;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.book-item:hover {
+    background: rgba(139, 105, 20, 0.4);
+    transform: translateX(5px);
+}
+
+.book-item.active {
+    background: rgba(139, 105, 20, 0.6);
+    border-color: #f4e4c1;
+}
+
+.no-books {
+    color: #999;
+    text-align: center;
+    font-style: italic;
+}
+
+.builder-editor {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #f4e4c1;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #8b6914;
+    border-radius: 5px;
+    color: #f4e4c1;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #f4e4c1;
+    box-shadow: 0 0 10px rgba(244, 228, 193, 0.3);
+}
+
+.pages-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+}
+
+.page-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #8b6914;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.page-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.page-number {
+    color: #f4e4c1;
+    font-weight: bold;
+}
+
+.builder-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 2px solid #8b6914;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BOOK VIEWER
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.viewer-content {
+    width: 900px;
+    height: 700px;
+}
+
+.viewer-header {
+    background: linear-gradient(135deg, #8b6914 0%, #6b5410 100%);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #5a4710;
+}
+
+.viewer-header h2 {
+    color: #f4e4c1;
+    font-size: 22px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.viewer-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 60px);
+}
+
+#bookContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.magazine {
+    width: 700px;
+    height: 500px;
+}
+
+.magazine .page {
+    width: 350px;
+    height: 500px;
+    background: linear-gradient(135deg, #f4e4c1 0%, #e8d7ae 100%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.magazine .page img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.viewer-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.page-info {
+    color: #f4e4c1;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.durability-bar {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#durabilityText {
+    color: #f4e4c1;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.durability-progress {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #8b6914;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.durability-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #dc143c 0%, #8b0000 100%);
+    transition: width 0.3s, background 0.3s;
+}
+
+.durability-fill.high {
+    background: linear-gradient(90deg, #28a745 0%, #1e7e34 100%);
+}
+
+.durability-fill.medium {
+    background: linear-gradient(90deg, #ffc107 0%, #e0a800 100%);
+}
+
+.durability-fill.low {
+    background: linear-gradient(90deg, #dc143c 0%, #8b0000 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+    color: #333;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+}
+
+.btn-nav {
+    background: linear-gradient(135deg, #8b6914 0%, #6b5410 100%);
+    color: #f4e4c1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8b6914;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b5410;
+}
