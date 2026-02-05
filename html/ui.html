@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LXR Book System</title>
+    <link rel="stylesheet" href="ui.css">
+    <script src="nui://game/ui/jquery.js"></script>
+    <script src="turn.min.js"></script>
+</head>
+<body>
+    <!-- Book Builder UI -->
+    <div id="bookBuilder" class="modal" style="display: none;">
+        <div class="modal-content builder-content">
+            <div class="modal-header">
+                <h2>🐺 <span class="header-text">Book Builder</span></h2>
+                <button class="close-btn" id="closeBuilder">&times;</button>
+            </div>
+            
+            <div class="builder-body">
+                <div class="builder-sidebar">
+                    <h3 class="sidebar-title">Saved Books</h3>
+                    <div id="booksList" class="books-list">
+                        <p class="no-books">No saved books</p>
+                    </div>
+                </div>
+                
+                <div class="builder-editor">
+                    <div class="form-group">
+                        <label for="bookTitle">Book Title</label>
+                        <input type="text" id="bookTitle" class="form-control" placeholder="Enter book title...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pages (<span id="pageCount">0</span>/<span id="maxPages">50</span>)</label>
+                        <button class="btn btn-primary" id="addPageBtn">+ Add Page</button>
+                    </div>
+                    
+                    <div id="pagesContainer" class="pages-container">
+                        <!-- Pages will be added dynamically -->
+                    </div>
+                    
+                    <div class="builder-actions">
+                        <button class="btn btn-success" id="saveBookBtn">💾 Save Book</button>
+                        <button class="btn btn-warning" id="bindBookBtn">📕 Bind to Item</button>
+                        <button class="btn btn-danger" id="deleteBookBtn">🗑️ Delete Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Book Viewer UI -->
+    <div id="bookViewer" class="modal" style="display: none;">
+        <div class="modal-content viewer-content">
+            <div class="viewer-header">
+                <h2 id="viewerTitle">Book Title</h2>
+                <button class="close-btn" id="closeViewer">&times;</button>
+            </div>
+            
+            <div class="viewer-body">
+                <div id="bookContainer">
+                    <div id="magazine" class="magazine">
+                        <!-- Pages will be added dynamically by Turn.js -->
+                    </div>
+                </div>
+                
+                <div class="viewer-controls">
+                    <button class="btn btn-nav" id="prevPage">← Previous</button>
+                    <span class="page-info">
+                        Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+                    </span>
+                    <button class="btn btn-nav" id="nextPage">Next →</button>
+                </div>
+                
+                <div class="durability-bar">
+                    <span id="durabilityText">Condition: 30/30</span>
+                    <div class="durability-progress">
+                        <div id="durabilityFill" class="durability-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="ui.js"></script>
+</body>
+</html>

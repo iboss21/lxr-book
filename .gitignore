@@ -1,0 +1,23 @@
+# Build artifacts
+*.log
+*.tmp
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+/tmp/
+*.bak
+
+# Dependencies (if any)
+node_modules/
